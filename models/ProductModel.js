@@ -1,5 +1,5 @@
 "use strict";
-
+const faker = require("faker");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -27,6 +27,24 @@ const ProductModelSchema = new Schema({
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });
+
+//generate 20 fake products
+ProductModelSchema.statics.generateProduct = async function () {
+  let products = [];
+
+  for (let i = 1; i <= 20; i++) {
+    products.push({
+      sku: new Date().getTime() + i,
+      title: faker.commerce.productName(),
+      description: faker.commerce.productDescription(),
+      quantity: 20,
+      price: faker.commerce.price(),
+    });
+  }
+
+  const prod = await this.insertMany(products);
+  return !!prod;
+};
 
 ProductModelSchema.pre("save", function (next) {
   this.updatedAt = Date.now();

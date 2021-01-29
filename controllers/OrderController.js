@@ -234,7 +234,6 @@ const compareOrderCount = async (req, res, next) => {
         },
       },
     ]);
-
     //preparing chart data
     let chartData = [];
     for (let i in CurrentLastWeek.currentWeek) {

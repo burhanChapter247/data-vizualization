@@ -33,7 +33,7 @@ export default () => {
     return data.data[targetItem.point].title;
   };
 
-  const Area = (restProps) => {
+  const modifyBar = (restProps) => {
     if (data.data[restProps.index].count <= 5) {
       return <BarSeries.Point {...restProps} color="#22f2e8" />;
     }
@@ -54,13 +54,13 @@ export default () => {
           <BarSeries
             name="Products"
             valueField="count"
-            argumentField="title"
+            argumentField="sku"
             color="#3266a8"
-            pointComponent={Area}
+            pointComponent={modifyBar}
           />
           <EventTracker />
           <Tooltip contentComponent={TooltipContent} />
-          <Legend position="bottom" />
+          {/* <Legend position="bottom" /> */}
           <Title text="Product chart" />
           <Animation />
         </Chart>

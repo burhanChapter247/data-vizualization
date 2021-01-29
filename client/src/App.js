@@ -1,6 +1,7 @@
 import ProductChart from "./component/products-chart";
 import SalesVariation from "./component/sales-variation";
 import OrdersVariation from "./component/orders-variation";
+import Dashboard from "./component/dashboard";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import { QueryClient, QueryClientProvider, useQuery } from "react-query";
@@ -25,9 +26,6 @@ function App() {
               </li>
             </ul>
           </nav>
-
-          {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
           <Switch>
             <Route path="/product">
               <ProductChart />
@@ -37,6 +35,9 @@ function App() {
             </Route>
             <Route path="/order">
               <OrdersVariation />
+            </Route>
+            <Route path="/">
+              <Dashboard />
             </Route>
           </Switch>
         </div>

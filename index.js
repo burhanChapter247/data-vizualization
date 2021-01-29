@@ -4,14 +4,15 @@ const cors = require("cors");
 const routes = require("./routes/v1");
 const app = express();
 
+//var dbUrl = "mongodb://127.0.0.1:27017/charts";
+var dbUrl =
+  "mongodb+srv://task-1:task-1@charts.s7wyp.mongodb.net/the-charts?retryWrites=true&w=majority";
+
 //connecting DB
-mongoose.connect(
-  "mongodb+srv://task-1:task-1@charts.s7wyp.mongodb.net/the-charts?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: "true",
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect(dbUrl, {
+  useNewUrlParser: "true",
+  useUnifiedTopology: true,
+});
 
 mongoose.connection.on("error", (err) => {
   console.log("err", err);
